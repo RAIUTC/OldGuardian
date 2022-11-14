@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 //    @SerializedName("guestName") var guestName: String,
 //    val allRequest: AllRequest,
 //)
+
+//ActivityElderlyManager에서 사용하는 전체
 data class AllRequest(
     @SerializedName("guestName") var guestName: String,
     @SerializedName("name") var name: String,

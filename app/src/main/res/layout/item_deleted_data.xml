@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="90dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,6 +35,22 @@
             android:textSize="20dp"
             android:textColor="@color/black" />
 
+        <TextView
+            android:id="@+id/deleted_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/deleted_elder_name"
+            app:layout_constraintStart_toStartOf="@id/deleted_elder_name"
+            android:text="Time"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/deleted_time"
+            app:layout_constraintTop_toTopOf="@id/deleted_time"
+            android:text="삭제"
+            android:layout_marginStart="10dp"/>
+
         <ImageButton
             android:id="@+id/restore_btn"
             android:layout_width="60dp"
@@ -47,4 +63,4 @@
             android:layout_marginEnd="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

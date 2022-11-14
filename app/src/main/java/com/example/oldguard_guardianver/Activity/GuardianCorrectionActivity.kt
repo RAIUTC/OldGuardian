@@ -24,6 +24,7 @@ class GuardianCorrectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
+        var position = intent.getIntExtra("position",0) //꼭 위에!
 
         var intent : Intent
         viewBinding = ActivityGuardianCorrectionBinding.inflate(layoutInflater)
@@ -42,6 +43,7 @@ class GuardianCorrectionActivity : AppCompatActivity() {
                 .setPositiveButton("확인",
                     DialogInterface.OnClickListener { dialog, which ->
                         intent = Intent(this, ElderInfoActivity::class.java)
+                        intent.putExtra("position", position)
                         setResult(DELETE, intent)
                         finish()    //Activity 종료
                     })
@@ -77,6 +79,7 @@ class GuardianCorrectionActivity : AppCompatActivity() {
                 }
             })
             val intent = Intent(this, ElderInfoActivity::class.java)
+            intent.putExtra("position", position)
             setResult(FIX, intent)
             finish()
         }
