@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/title_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="70dp"
+        android:layout_marginVertical="80dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@id/layout_next_btn"/>
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->

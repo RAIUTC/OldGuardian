@@ -27,7 +27,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class ElderlyManager2Activity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityElderlyManager2Binding
-    private lateinit var getResultText : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,36 +49,36 @@ class ElderlyManager2Activity : AppCompatActivity() {
 
         //viewBinding.elderName.text= intent.getStringExtra("name")
 
-//        var request = AllRequest("guestName","name","phoneNumber")
-//        var gson = GsonBuilder().setLenient().create()
-//
-//        var r = ""
-//        val client = OkHttpClient.Builder().addInterceptor { chain ->
-//            val newRequest: Request = chain.request().newBuilder()
-//                .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
-//                .build()
-//            chain.proceed(newRequest)
-//        }.build()
-//        var retrofit = Retrofit.Builder()
-//            .client(client)
-//            .baseUrl("http://10.0.2.2:8080")
-//            .addConverterFactory(ScalarsConverterFactory.create())
-//            .addConverterFactory(GsonConverterFactory.create(gson))
-//            .build()
-//        var server = retrofit.create(HowIService::class.java)
-//        server.getLoginRequest(request,request,request).enqueue(object : Callback<AllRequest> {
-//            override fun onFailure(call: Call<AllRequest>, t: Throwable) {
-//            }
-//            override fun onResponse(call: Call<AllRequest>, response: Response<AllRequest>) {
-//                Log.d("성공", response.body().toString())
-//                request.guestName = response.body()?.guestName.toString()
-//                request.name = response.body()?.name.toString()
-//                request.phoneNumber=response.body()?.phoneNumber.toString()
-//                Log.d("게스트이름",request.guestName)
-//                Log.d("이름",request.name)
-//                Log.d("전화번호",request.phoneNumber)
-//            }
-//        })
+        var request = AllRequest("guestName","name","phoneNumber")
+        var gson = GsonBuilder().setLenient().create()
+
+        var r = ""
+        val client = OkHttpClient.Builder().addInterceptor { chain ->
+            val newRequest: Request = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
+                .build()
+            chain.proceed(newRequest)
+        }.build()
+        var retrofit = Retrofit.Builder()
+            .client(client)
+            .baseUrl("http://10.0.2.2:8080")
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+        var server = retrofit.create(HowIService::class.java)
+        server.getLoginRequest(request,request,request).enqueue(object : Callback<AllRequest> {
+            override fun onFailure(call: Call<AllRequest>, t: Throwable) {
+            }
+            override fun onResponse(call: Call<AllRequest>, response: Response<AllRequest>) {
+                Log.d("성공", response.body().toString())
+                request.guestName = response.body()?.guestName.toString()
+                request.name = response.body()?.name.toString()
+                request.phoneNumber=response.body()?.phoneNumber.toString()
+                Log.d("게스트이름",request.guestName)
+                Log.d("이름",request.name)
+                Log.d("전화번호",request.phoneNumber)
+            }
+        })
 
 
         dataList.apply {
@@ -101,10 +100,10 @@ class ElderlyManager2Activity : AppCompatActivity() {
         elderManagerRVAdapter.setOnItemClickListener(object : ElderManagerRVAdapter.OnItemClickListener {
             override fun onItemClick(view : View, data : GuestLoginRequest, position : Int) {
                 intent = Intent(this@ElderlyManager2Activity, ElderInfoActivity::class.java)
-//                intent.putExtra("guestName",request.guestName)
-//                intent.putExtra("name",request.name)
-    //                intent.putExtra("phoneNumber",request.phoneNumber)
-                    startActivity(intent)
+                intent.putExtra("guestName",request.guestName)
+                intent.putExtra("name",request.name)
+                intent.putExtra("phoneNumber",request.phoneNumber)
+                startActivity(intent)
                 }
             })
 
@@ -124,14 +123,6 @@ class ElderlyManager2Activity : AppCompatActivity() {
 //                    })
 //        }
 
-//        //어르신 상세 정보 버튼 눌렀을 때
-//        viewBinding.elderBtn.setOnClickListener {
-//            val intent = Intent(this, ElderInfoActivity::class.java);
-//            intent.putExtra("guestName",request.guestName)
-//            intent.putExtra("name",request.name)
-//            intent.putExtra("phoneNumber",request.phoneNumber)
-//            startActivity(intent)
-//        }
 
         //추가하기 버튼 눌렀을 때
         viewBinding.addBtn.setOnClickListener {
