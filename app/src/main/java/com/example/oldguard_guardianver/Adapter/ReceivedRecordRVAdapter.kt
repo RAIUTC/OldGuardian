@@ -19,6 +19,11 @@ class ReceivedRecordRVAdapter (private var dataList : ArrayList<ReceivedRecordDa
         }
     }
 
+    //RecycleView 재사용 오류 방지 코드
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val viewBinding = ItemReceivedDataBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ItemViewHolder(viewBinding)

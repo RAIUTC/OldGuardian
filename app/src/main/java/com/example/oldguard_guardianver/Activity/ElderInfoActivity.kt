@@ -109,33 +109,30 @@ class ElderInfoActivity : AppCompatActivity() {
                     Log.d("오류발생", "보호자 정부 수정하기에서 데이터 가져오기 실패")
                 }
             }
+        }
 
-            //생활패턴 수정하기 Activity에서 얻어온 경우
-            getResultLivingPT = registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()
-            ) { result ->
-                if (result.resultCode == FIX) {
-                    //수정하기 저장 누른 후
-
-                } else {
-                    Log.d("오류발생", "생활패턴수정하기에서 데이터 가져오기 실패")
-                }
+        //생활패턴 수정하기 Activity에서 얻어온 경우
+        getResultLivingPT = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == FIX) {
+            //수정하기 저장 누른 후
+            } else {
+                Log.d("오류발생", "생활패턴수정하기에서 데이터 가져오기 실패")
             }
+        }
 
             //온도와 창문열림 관리 수정하기 Activity에서 얻어온 정보
-            getResultDAW = registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()
-            ) { result ->
-                if (result.resultCode == FIX) {
-                    //수정하기 저장 누른 후
-
-                } else {
-                    Log.d("오류발생", "온도와 창문열림 수정하기에서 데이터 가져오기 실패")
-                }
+        getResultDAW = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == FIX) {
+            //수정하기 저장 누른 후
+            } else {
+                Log.d("오류발생", "온도와 창문열림 수정하기에서 데이터 가져오기 실패")
             }
-
-
         }
+
     }
         companion object {
         const val DELETE = 1001 //삭제했을 때 resultCode

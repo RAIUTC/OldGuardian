@@ -16,6 +16,11 @@ class DeletedRecordRVAdapter (private var dataList : ArrayList<DeletedRecordData
         }
     }
 
+    //RecycleView 재사용 오류 방지 코드
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val viewBinding = ItemDeletedDataBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ItemViewHolder(viewBinding)
