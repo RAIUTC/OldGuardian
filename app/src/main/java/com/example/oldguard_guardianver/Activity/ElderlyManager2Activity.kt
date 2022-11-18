@@ -81,6 +81,7 @@ class ElderlyManager2Activity : AppCompatActivity() {
         })
 
 
+        //예시 어르신 list
         dataList.apply {
             add(GuestLoginRequest("로그인코드","어르신1"))
             add(GuestLoginRequest("로그인코드","어르신2"))

@@ -442,6 +442,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/layout_elder_living_pattern"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical"
                 >
                 <TextView
@@ -543,6 +545,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="30dp"
+
                         android:gravity="center"
                         >
                         <TextView

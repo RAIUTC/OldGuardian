@@ -35,10 +35,8 @@ class ElderInfoActivity : AppCompatActivity() {
         var intent: Intent
 
         viewBinding.rvElderInfo.adapter = elderInfoRVAdapter
-        //역순으로 (생성된 순) 출력
+
         val manager = LinearLayoutManager(this)
-        manager.reverseLayout = true
-        manager.stackFromEnd = true
         viewBinding.rvElderInfo.layoutManager = manager
 
         //test용 추가. 데이터 관리할 때 변경 필요
