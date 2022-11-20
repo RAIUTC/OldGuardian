@@ -32,7 +32,6 @@ class ElderInfoRVAdapter (private val datalist : ArrayList<AddInfoRequest>) : Re
             viewBinding.guardianNumber1.text = data.number
 
             viewBinding.guardianBtn1.setOnClickListener {
-
             }
         }
     }
