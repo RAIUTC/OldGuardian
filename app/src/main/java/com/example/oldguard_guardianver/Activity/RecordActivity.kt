@@ -24,7 +24,7 @@ class RecordActivity : AppCompatActivity() {
 
         //tab 제목에 대한 배열
         val tabTitleArray = arrayOf(
-            "받은 문자 기록", "삭제한 어르신 기록"
+            "받은 알람", "삭제한 어르신"
         )
 
         //클래스에 tab 간편 연결

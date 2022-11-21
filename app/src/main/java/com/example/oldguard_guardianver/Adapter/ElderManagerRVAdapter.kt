@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oldguard_guardianver.Activity.ElderlyManagerActivity
 import com.example.oldguard_guardianver.Request.GuestLoginRequest
 import com.example.oldguard_guardianver.databinding.ItemElderManagerBinding
 
@@ -18,16 +19,22 @@ class ElderManagerRVAdapter (private var dataList : ArrayList<GuestLoginRequest>
         this.listener = listener
     }
 
+    interface OnBtnClickListener {
+        fun onBtnClick(view : View, data : GuestLoginRequest, position : Int)
+    }
+    private var btnListener : OnBtnClickListener? = null
+    fun setOnBtnClickListener(btnListener : OnBtnClickListener) {
+        this.btnListener = btnListener
+    }
+
     inner class ItemViewHolder(private val viewBinding : ItemElderManagerBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
-        fun bind(data : GuestLoginRequest, position: Int) {
+        fun bind(data : GuestLoginRequest, position: Int, holder : ItemViewHolder) {
             viewBinding.elderName.text = data.name
 
             //삭제 버튼 누르면 화면에서 삭제되게 함
             viewBinding.elderDeleteBtn.setOnClickListener {
-                //이 부분에 서버에 삭제 전 저장할 부분 있으면 해주세요
-                dataList.removeAt(position)
-                notifyItemRemoved(position)
+                btnListener?.onBtnClick(holder.itemView, dataList[position], position)
             }
         }
     }
@@ -38,7 +45,7 @@ class ElderManagerRVAdapter (private var dataList : ArrayList<GuestLoginRequest>
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(dataList[position], position)
+        holder.bind(dataList[position], position, holder)
         if (position != RecyclerView.NO_POSITION) {
             holder.itemView.setOnClickListener {
                 listener?.onItemClick(holder.itemView, dataList[position], position)

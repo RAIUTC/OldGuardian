@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="20dp"
-            android:entries="@array/spinner_entries_received"/>
+            android:entries="@array/spinner_entries"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/received_rv"

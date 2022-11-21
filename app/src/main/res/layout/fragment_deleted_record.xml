@@ -35,7 +35,8 @@
             android:spinnerMode="dropdown"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/deleted_text"/>
+            app:layout_constraintStart_toEndOf="@id/deleted_text"
+            android:entries="@array/spinner_entries"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/deleted_rv"

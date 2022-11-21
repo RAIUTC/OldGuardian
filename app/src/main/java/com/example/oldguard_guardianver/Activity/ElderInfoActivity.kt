@@ -50,8 +50,8 @@ class ElderInfoActivity : AppCompatActivity() {
 //        viewBinding.guardianNumber1.text = data.getStringExtra("phoneNumber")
 
         //보호자 layout 클릭하면 수정하기 실행
-        elderInfoRVAdapter.setOnItemClickListener(object : ElderInfoRVAdapter.OnItemClickListener {
-            override fun onItemClick(view: View, data: AddInfoRequest, position: Int) {
+        elderInfoRVAdapter.setOnBtnClickListener(object : ElderInfoRVAdapter.OnBtnClickListener {
+            override fun onBtnClick(view: View, data: AddInfoRequest, position: Int) {
                 val intent = Intent(this@ElderInfoActivity, GuardianCorrectionActivity::class.java)
                 intent.putExtra("position", position)
                 getResultGuardian.launch(intent)

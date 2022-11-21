@@ -5,20 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.oldguard_guardianver.Request.AddInfoRequest
-import com.example.oldguard_guardianver.Request.GuestLoginRequest
 import com.example.oldguard_guardianver.databinding.ItemElderInfoBinding
 
 class ElderInfoRVAdapter (private val datalist : ArrayList<AddInfoRequest>) : RecyclerView.Adapter<ElderInfoRVAdapter.DataViewHolder>() {
-    interface  OnItemClickListener {
-        fun onItemClick(view : View, data : AddInfoRequest, position : Int)
-    }
-    private var listener : OnItemClickListener? = null
-    fun setOnItemClickListener(listener : OnItemClickListener) {
-        this.listener = listener
-    }
 
     interface OnBtnClickListener {
-        fun onBtnClick(view : View, data : GuestLoginRequest, position: Int)
+        fun onBtnClick(view : View, data : AddInfoRequest, position: Int)
     }
     private var btnListener : OnBtnClickListener? = null
     fun setOnBtnClickListener(btnListener: OnBtnClickListener) {
@@ -26,12 +18,12 @@ class ElderInfoRVAdapter (private val datalist : ArrayList<AddInfoRequest>) : Re
     }
 
     inner class DataViewHolder(private val viewBinding : ItemElderInfoBinding) : RecyclerView.ViewHolder(viewBinding.root) {
-        private var pos : Int = 0
-        fun bind(data : AddInfoRequest, position : Int) {
+        fun bind(data: AddInfoRequest, position: Int, holder: DataViewHolder) {
             viewBinding.guardianName1.text = data.name
             viewBinding.guardianNumber1.text = data.number
 
             viewBinding.guardianBtn1.setOnClickListener {
+                btnListener?.onBtnClick(holder.itemView, datalist[position], position)
             }
         }
     }
@@ -48,12 +40,7 @@ class ElderInfoRVAdapter (private val datalist : ArrayList<AddInfoRequest>) : Re
 
     //ViewHolder가 실제로 데이터를 표시해야 할 때 호출되는 함수
     override fun onBindViewHolder(holder: DataViewHolder, position: Int)  {
-        holder.bind(datalist[position], position)
-        holder.itemView.setOnClickListener {
-            listener?.onItemClick(holder.itemView, datalist[position], position)
-        }
-
-
+        holder.bind(datalist[position], position, holder)
     }
 
     override fun getItemCount(): Int = datalist.size

@@ -13,6 +13,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.oldguard_guardianver.Adapter.ReceivedRecordRVAdapter
 import com.example.oldguard_guardianver.R
 import com.example.oldguard_guardianver.Request.ReceivedRecordData
+import com.example.oldguard_guardianver.databinding.FragmentDeletedRecordBinding
 import com.example.oldguard_guardianver.databinding.FragmentReceivedRecordBinding
 import com.example.oldguard_guardianver.databinding.ItemReceivedDataBinding
 import java.text.FieldPosition
@@ -20,11 +21,7 @@ import java.text.FieldPosition
 class ReceivedRecordFragment : Fragment() {
     lateinit var viewBinding : FragmentReceivedRecordBinding
     private lateinit var adapter : ReceivedRecordRVAdapter
-
-    override fun onCreate(savedInstanceState : Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    val manager = LinearLayoutManager(activity)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,15 +29,32 @@ class ReceivedRecordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewBinding = FragmentReceivedRecordBinding.inflate(inflater, container, false)
+        return viewBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val itemList = listOf<String>("최신순","오래된순")
-        val list = ArrayList<ReceivedRecordData>()
-        adapter = ReceivedRecordRVAdapter(list)
+        val dataList = ArrayList<ReceivedRecordData>()
+        adapter = ReceivedRecordRVAdapter(dataList)
         viewBinding.receivedRv.adapter = adapter
 
-        viewBinding.receivedRv.layoutManager = LinearLayoutManager(activity)
+//      처음 시작은 역순으로 (최신순) 출력
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+        viewBinding.receivedRv.layoutManager = manager
 
-        viewBinding.receivedSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        dataList.apply {
+            add(ReceivedRecordData("A","2022.11.22 22:15","문자"))
+            add(ReceivedRecordData("A","2022.11.22 22:16","전화"))
+            add(ReceivedRecordData("C","2022.11.22 22:17","문자"))
+            add(ReceivedRecordData("D","2022.11.22 22:18","문자"))
+        }
+//                adapter.items = dataList
+//                adapter.notifyDataSetChanged()   //추가 add시 필수
+
+                viewBinding.receivedSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -61,21 +75,18 @@ class ReceivedRecordFragment : Fragment() {
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
-        return FragmentReceivedRecordBinding.inflate(layoutInflater).root
     }
 
     //최신순으로 add
      fun updateLatestReceived() {
-         //예시
-         //val list = ArrayList<ReceivedRecordData>()
-         //list.add(ReceivedRecordData(add(name,time,type)) 등등
-         //adapter.items = list
-         //adapter.notifyDataSetChanged()   //필수
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+        viewBinding.receivedRv.layoutManager = manager
      }
     //오래된 순으로 add
     fun updateOldReceived() {
-        //위와 동일
+        manager.reverseLayout = false
+        manager.stackFromEnd = false
+        viewBinding.receivedRv.layoutManager = manager
     }
-
-
 }
