@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
-import com.example.oldguard_guardianver.Activity.ElderlyManager2Activity
+import com.example.oldguard_guardianver.Activity.ElderlyManagerActivity
 import com.example.oldguard_guardianver.App
 import com.example.oldguard_guardianver.HowIService
 import com.example.oldguard_guardianver.Request.GuestNameResponse
@@ -56,7 +56,7 @@ class MainIntent : AppCompatActivity() {
         })
 
         viewBinding.nextBtn.setOnClickListener {
-            var intent = Intent(this, ElderlyManager2Activity::class.java)
+            var intent = Intent(this, ElderlyManagerActivity::class.java)
             intent.putExtra("name", temp);
             //설정종료 버튼 누르면 ElderlyMangerActivity ~ CodeIssueActivity까지 모두 종료 후 새로운 ElderMangerActivity 생성
             //flag는??
