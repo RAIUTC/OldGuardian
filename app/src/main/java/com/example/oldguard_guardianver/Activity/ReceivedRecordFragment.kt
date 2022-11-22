@@ -50,6 +50,12 @@ class ReceivedRecordFragment : Fragment() {
             add(ReceivedRecordData("A","2022.11.22 22:16","전화"))
             add(ReceivedRecordData("C","2022.11.22 22:17","문자"))
             add(ReceivedRecordData("D","2022.11.22 22:18","문자"))
+            add(ReceivedRecordData("D","2022.11.22 22:19","문자"))
+            add(ReceivedRecordData("A","2022.11.22 22:20","문자"))
+            add(ReceivedRecordData("D","2022.11.22 22:21","문자"))
+            add(ReceivedRecordData("B","2022.11.22 22:22","문자"))
+            add(ReceivedRecordData("A","2022.11.22 22:23","문자"))
+            add(ReceivedRecordData("C","2022.11.22 22:24","문자"))
         }
 //                adapter.items = dataList
 //                adapter.notifyDataSetChanged()   //추가 add시 필수

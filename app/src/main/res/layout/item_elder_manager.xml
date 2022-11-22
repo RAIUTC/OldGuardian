@@ -13,23 +13,34 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="15dp">
 
+        <ImageView
+            android:id="@+id/elder_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/person_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/elder_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
         <TextView
             android:id="@+id/elder_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="김복남"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="15dp"/>
+            android:layout_marginStart="60dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="어르신"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/elder_name"

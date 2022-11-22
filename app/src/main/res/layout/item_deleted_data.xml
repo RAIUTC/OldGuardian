@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="70dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="10dp"
     android:background="@color/white">
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
@@ -33,7 +33,7 @@
             app:layout_constraintStart_toEndOf="@id/deleted_elder_name"
             app:layout_constraintBottom_toBottomOf="@id/deleted_elder_name"
             android:layout_marginStart="10dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textColor="@color/black" />
 
         <TextView
@@ -43,6 +43,7 @@
             app:layout_constraintTop_toBottomOf="@id/deleted_elder_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/deleted_elder_name"
+            android:textSize="17dp"
             android:text="Time"/>
 
         <TextView
@@ -51,6 +52,7 @@
             app:layout_constraintStart_toEndOf="@id/deleted_time"
             app:layout_constraintTop_toTopOf="@id/deleted_time"
             android:text="삭제"
+            android:textSize="17dp"
             android:layout_marginStart="10dp"/>
 
         <ImageButton
@@ -60,8 +62,8 @@
             android:src="@drawable/return_time"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/deleted_elder_name"
-            app:layout_constraintBottom_toBottomOf="@id/deleted_elder_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="10dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
