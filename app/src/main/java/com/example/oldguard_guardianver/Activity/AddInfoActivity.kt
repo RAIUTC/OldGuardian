@@ -17,12 +17,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**   첫번째 어르신 추가 화면   */
 class AddInfoActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAddInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //activity_add_info와 연결
         viewBinding = ActivityAddInfoBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 

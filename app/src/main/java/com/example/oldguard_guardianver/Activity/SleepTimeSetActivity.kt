@@ -20,8 +20,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalTime
 
+/**   어르신 추가 시 수면시간 설정 화면   */
 class SleepTimeSetActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivitySleepTimeSetBinding
+    private lateinit var viewBinding: ActivitySleepTimeSetBinding   //activity_sleep_time_set 화면과 연결
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState : Bundle?) {

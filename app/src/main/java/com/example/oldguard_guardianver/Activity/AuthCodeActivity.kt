@@ -18,16 +18,18 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+/**   어르신 추가 시, 어르신 성함, 코드 주소 입력받는 화면   */
 class AuthCodeActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAuthCodeBinding
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //activity_auth_code와 연결
         viewBinding = ActivityAuthCodeBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        //다음 버튼 눌렀을 때
         viewBinding.nextBtn.setOnClickListener {
             var request = GuestLoginRequest(viewBinding.editLoginCode.text.toString(),viewBinding.editElderName.text.toString())
             var gson = GsonBuilder().setLenient().create()

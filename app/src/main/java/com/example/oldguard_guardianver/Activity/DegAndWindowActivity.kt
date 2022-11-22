@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.oldguard_guardianver.databinding.ActivityDegAndWindowBinding
 import com.example.oldguard_guardianver.intent.MainIntent
 
+/**   어르신 추가 시 온도, 창문열림 설정 화면   */
 class DegAndWindowActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityDegAndWindowBinding
+    private lateinit var viewBinding: ActivityDegAndWindowBinding   //activity_deg_and_window와 연결
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,6 +9,7 @@ import com.example.oldguard_guardianver.Request.AddInfoRequest
 import com.example.oldguard_guardianver.Request.DeletedRecordData
 import com.example.oldguard_guardianver.databinding.ItemDeletedDataBinding
 
+/**   삭제했던 어르신 기록(DeletedRecordActivity)의 RecyclerView에서 사용할 어댑터   */
 class DeletedRecordRVAdapter (private var dataList : ArrayList<DeletedRecordData>) : RecyclerView.Adapter<DeletedRecordRVAdapter.ItemViewHolder>() {
 
     interface OnBtnClickListener {

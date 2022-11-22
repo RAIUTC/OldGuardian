@@ -19,12 +19,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**   어르신 관리에서 보호자 정보 수정 화면(삭제 저장 가능)   */
 class GuardianCorrectionActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityGuardianCorrectionBinding
+    private lateinit var viewBinding: ActivityGuardianCorrectionBinding //activity_guardian_correction화면과 연결
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
-        var position = intent.getIntExtra("position",0) //꼭 위에!
+        var position = intent.getIntExtra("position",0) //꼭 위에 위치시키기
 
         var intent : Intent
         viewBinding = ActivityGuardianCorrectionBinding.inflate(layoutInflater)

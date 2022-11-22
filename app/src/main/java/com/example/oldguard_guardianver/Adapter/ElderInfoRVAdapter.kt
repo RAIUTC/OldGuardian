@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.oldguard_guardianver.Request.AddInfoRequest
 import com.example.oldguard_guardianver.databinding.ItemElderInfoBinding
 
+/**   메인에서 선택한 어르신의 보호자관리(ElderInfoActivity)의 ReyclerView에서 사용하는 어댑터   */
 class ElderInfoRVAdapter (private val datalist : ArrayList<AddInfoRequest>) : RecyclerView.Adapter<ElderInfoRVAdapter.DataViewHolder>() {
 
     interface OnBtnClickListener {

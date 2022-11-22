@@ -1,24 +1,17 @@
 package com.example.oldguard_guardianver.Activity
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.oldguard_guardianver.Adapter.DeletedRecordRVAdapter
-import com.example.oldguard_guardianver.Adapter.ElderInfoRVAdapter
-import com.example.oldguard_guardianver.Adapter.ElderManagerRVAdapter
-import com.example.oldguard_guardianver.Request.AddInfoRequest
 import com.example.oldguard_guardianver.Request.DeletedRecordData
-import com.example.oldguard_guardianver.Request.GuestLoginRequest
 import com.example.oldguard_guardianver.databinding.FragmentDeletedRecordBinding
 
+/**   기록에서 삭제했던 어르신 보기 및 복구 화면   */
 class DeleteRecordFragment : Fragment() {
     lateinit var viewBinding : FragmentDeletedRecordBinding
     private lateinit var adapter : DeletedRecordRVAdapter
@@ -30,6 +23,7 @@ class DeleteRecordFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //fragment_deleted_record 와 연결
         viewBinding = FragmentDeletedRecordBinding.inflate(inflater, container, false)
         return viewBinding.root
     }
@@ -55,6 +49,7 @@ class DeleteRecordFragment : Fragment() {
             add(DeletedRecordData("C","2022.11.22 22:17"))
             add(DeletedRecordData("D","2022.11.22 22:18"))
         }
+//                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 
         //adapter.items = dataList
         //adapter.notifyDataSetChanged()   //추가로 add시 필수
@@ -70,6 +65,7 @@ class DeleteRecordFragment : Fragment() {
 //            }
 //        })
 
+        //드롭다운 spinner 구현화면
         viewBinding.deletedSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -95,12 +91,14 @@ class DeleteRecordFragment : Fragment() {
 
     //최신순으로 add
     fun updateLatestDeleted() {
+        //역순으로 recyclerView 정렬
         manager.reverseLayout = true
         manager.stackFromEnd = true
         viewBinding.deletedRv.layoutManager = manager
     }
     //오래된 순으로 add
     fun updateOldDeleted() {
+        //원래대로 recyclerView 정렬
         manager.reverseLayout = false
         manager.stackFromEnd = false
         viewBinding.deletedRv.layoutManager = manager

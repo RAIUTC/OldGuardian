@@ -7,6 +7,7 @@ import com.example.oldguard_guardianver.Adapter.RecordVPAdapter
 import com.example.oldguard_guardianver.databinding.ActivityRecordBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
+/**   기록을 보여주는 화면(ReceivedRecordFragment와 DeletedRecordFragment가 들어감)   **/
 class RecordActivity : AppCompatActivity() {
     private val viewBinding : ActivityRecordBinding by lazy {
         ActivityRecordBinding.inflate(layoutInflater)

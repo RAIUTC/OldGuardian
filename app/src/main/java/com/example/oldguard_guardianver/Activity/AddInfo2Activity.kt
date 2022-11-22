@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.oldguard_guardianver.databinding.ActivityAddInfo2Binding
 import com.example.oldguard_guardianver.intent.PatternIntent
 
+/**   두번째 어르신 추가 화면   */
 class AddInfo2Activity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityAddInfo2Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //activity_add_info2 와 연결
         viewBinding = ActivityAddInfo2Binding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.oldguard_guardianver.Request.ReceivedRecordData
 import com.example.oldguard_guardianver.databinding.ItemReceivedDataBinding
 
+/**   왔던 알람 기록(ReceivedRecordActivity)의 recyclerView를 위한 어댑터   */
 class ReceivedRecordRVAdapter (private var dataList : ArrayList<ReceivedRecordData>) :
     RecyclerView.Adapter<ReceivedRecordRVAdapter.ItemViewHolder>() {
     inner class ItemViewHolder(private val viewBinding : ItemReceivedDataBinding) :

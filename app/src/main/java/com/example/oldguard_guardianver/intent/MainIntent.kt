@@ -22,6 +22,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
+/**  '설정이 모두 끝났어요' 안내 화면  */
 class MainIntent : AppCompatActivity() {
     private lateinit var viewBinding: ActivityCodeIssueBinding
 

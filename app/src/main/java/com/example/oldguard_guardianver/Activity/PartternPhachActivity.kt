@@ -5,8 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oldguard_guardianver.databinding.ActivityPatternPhachBinding
 
+/**   어르신 관리에서 생활패턴 수정 화면   */
 class PartternPhachActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityPatternPhachBinding
+    private lateinit var viewBinding: ActivityPatternPhachBinding   //activity_patten_phach 화면과 연결
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)

@@ -17,8 +17,9 @@ import com.example.oldguard_guardianver.Request.AddInfoRequest
 import com.example.oldguard_guardianver.databinding.ActivityElderInfoBinding
 import java.time.LocalTime
 
+/**  어르신 관리에서 메인 다음 페이지(선택한 어르신의 보호자들, 생활패턴등 보여주는 화면)   */
 class ElderInfoActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityElderInfoBinding
+    private lateinit var viewBinding: ActivityElderInfoBinding      //activity_elder_info 화면과 연결
     private lateinit var getResultGuardian : ActivityResultLauncher<Intent>
     private lateinit var getResultLivingPT : ActivityResultLauncher<Intent>
     private lateinit var getResultDAW : ActivityResultLauncher<Intent>

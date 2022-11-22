@@ -9,6 +9,7 @@ import com.example.oldguard_guardianver.Activity.ElderlyManagerActivity
 import com.example.oldguard_guardianver.Request.GuestLoginRequest
 import com.example.oldguard_guardianver.databinding.ItemElderManagerBinding
 
+/**   메인화면(ElderManagerActivity)의 RecyclervView를 위한 어댑터   */
 class ElderManagerRVAdapter (private var dataList : ArrayList<GuestLoginRequest>) :
     RecyclerView.Adapter<ElderManagerRVAdapter.ItemViewHolder>() {
     interface OnItemClickListener {
@@ -39,6 +40,11 @@ class ElderManagerRVAdapter (private var dataList : ArrayList<GuestLoginRequest>
         }
     }
 
+    //RecycleView 재사용 오류 방지 코드
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val viewBinding = ItemElderManagerBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ItemViewHolder(viewBinding)
@@ -54,10 +60,5 @@ class ElderManagerRVAdapter (private var dataList : ArrayList<GuestLoginRequest>
     }
 
     override fun getItemCount(): Int = dataList.size
-
-    //RecycleView 재사용 오류 방지 코드
-    override fun getItemViewType(position: Int): Int {
-        return position
-    }
 
 }

@@ -26,11 +26,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-//import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
-
+/**   관리하는 어르신을 보여주는 메인 화면   */
 class ElderlyManagerActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityElderlyManagerBinding
+    private lateinit var viewBinding: ActivityElderlyManagerBinding //activity_elder_manager과 연결
     private lateinit var getResultText : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState : Bundle?) {
@@ -122,6 +122,7 @@ class ElderlyManagerActivity : AppCompatActivity() {
             add(GuestLoginRequest("로그인코드","어르신6"))
             add(GuestLoginRequest("로그인코드","어르신7"))
         }
+//                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 
         //dataList가 비어있지 않으면 text 보이지 않게 하기
         if(dataList.isNotEmpty()) {

@@ -5,8 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.oldguard_guardianver.databinding.ActivityDegAndWindowCorrectionBinding
 
+/**   어르신 관리에서 온도, 창문열림 시간 수정 화면   */
 class DegAndWindowCorrectionActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityDegAndWindowCorrectionBinding
+    private lateinit var viewBinding: ActivityDegAndWindowCorrectionBinding     //activity_deg_and_window_correction과 연결
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

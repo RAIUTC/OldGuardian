@@ -25,10 +25,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
+/**   팀프로젝트1에서 사용했던 화면, 이제 사용하지 않음. 혹시 몰라서 남겨뒀어요 삭제해도 괜찮아요   */
 class ElderlyManager2Activity : AppCompatActivity() {
-    //이제 사용하지 X
-    //참고용 Activity
-    //필요없어지면 삭제해도 괜찮아요
+
 //    private lateinit var viewBinding: ActivityElderlyManager2Binding
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {

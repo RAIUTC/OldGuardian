@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.oldguard_guardianver.Activity.AddInfoActivity
 import com.example.oldguard_guardianver.databinding.ActivityContactInfoBinding
 
+/**   '보호자님의 연락처를 알려주세요' 안내 화면   */
 class ContactIntent : AppCompatActivity() {
     private lateinit var viewBinding: ActivityContactInfoBinding
 

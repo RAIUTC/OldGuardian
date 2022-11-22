@@ -18,8 +18,9 @@ import com.example.oldguard_guardianver.databinding.FragmentReceivedRecordBindin
 import com.example.oldguard_guardianver.databinding.ItemReceivedDataBinding
 import java.text.FieldPosition
 
+/**   기록에서 받은 알림 기록 화면   */
 class ReceivedRecordFragment : Fragment() {
-    lateinit var viewBinding : FragmentReceivedRecordBinding
+    lateinit var viewBinding : FragmentReceivedRecordBinding    //fragment_received_record화면과 연결
     private lateinit var adapter : ReceivedRecordRVAdapter
     val manager = LinearLayoutManager(activity)
 
@@ -45,6 +46,7 @@ class ReceivedRecordFragment : Fragment() {
         manager.stackFromEnd = true
         viewBinding.receivedRv.layoutManager = manager
 
+        //확인용 데이터들. 실제 구현할 떄 삭제해도돼요
         dataList.apply {
             add(ReceivedRecordData("A","2022.11.22 22:15","문자"))
             add(ReceivedRecordData("A","2022.11.22 22:16","전화"))
@@ -57,8 +59,9 @@ class ReceivedRecordFragment : Fragment() {
             add(ReceivedRecordData("A","2022.11.22 22:23","문자"))
             add(ReceivedRecordData("C","2022.11.22 22:24","문자"))
         }
+//                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 //                adapter.items = dataList
-//                adapter.notifyDataSetChanged()   //추가 add시 필수
+//                adapter.notifyDataSetChanged()
 
                 viewBinding.receivedSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(

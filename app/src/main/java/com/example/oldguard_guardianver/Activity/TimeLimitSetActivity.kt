@@ -19,8 +19,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**   어르신 추가 시 문자/전화/응급구조 시간 설정 화면   */
 class TimeLimitSetActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityTimeLimitSetBinding
+    private lateinit var viewBinding: ActivityTimeLimitSetBinding   //activity_time_limit_set 화면과 연결
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)

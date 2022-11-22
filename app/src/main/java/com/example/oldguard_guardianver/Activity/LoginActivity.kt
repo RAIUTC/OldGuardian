@@ -23,9 +23,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+/**   첫 화면 카카오톡/네이버 로그인 화면   */
 class LoginActivity : AppCompatActivity() {
-    private var _binding: ActivityLoginBinding? = null
+    private var _binding: ActivityLoginBinding? = null  //activity_login 화면과 연결
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
