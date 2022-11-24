@@ -120,7 +120,7 @@
                 android:id="@+id/edit_sos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="5"
+                android:hint="8"
                 android:padding="9dp"
                 android:textSize="18dp"
                 android:layout_marginHorizontal="10dp"
