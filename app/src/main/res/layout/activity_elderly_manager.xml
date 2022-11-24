@@ -26,19 +26,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textStyle="bold"
             />
-
-        <ImageButton
-            android:id="@+id/record_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/fix_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="15dp"
-            android:background="@android:color/transparent"
-            />
-
         <View
             android:id="@+id/title_bar_line"
             android:layout_width="match_parent"
@@ -51,6 +38,22 @@
             android:layout_marginHorizontal="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_record_btn"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar"
+        android:background="@drawable/record_layout_image"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp">
+        <Button
+            android:id="@+id/record_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
     <TextView
         android:id="@+id/lets_start_text"
         android:layout_width="wrap_content"
@@ -59,18 +62,18 @@
         android:textSize="15dp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_bar"
+        app:layout_constraintTop_toBottomOf="@id/layout_record_btn"
         android:layout_margin="25dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/elder_manager_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/title_bar"
+        app:layout_constraintTop_toBottomOf="@id/layout_record_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="80dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintBottom_toTopOf="@id/layout_next_btn"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
