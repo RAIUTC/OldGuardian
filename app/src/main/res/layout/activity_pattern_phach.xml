@@ -3,28 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/green_8">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/correct_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="parent"
-
-        android:layout_marginStart="16dp"
+        android:layout_height="60dp"
         android:padding="5dp"
         android:text="수정하실 정보를 입력해주세요"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/layout_correct_sleeping_time"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_correct_sleeping_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_less_button"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/light_gray"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_less_button"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/light_gray"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -227,7 +227,7 @@
             android:layout_height="50dp"
             android:background="@drawable/round_button"
             android:backgroundTint="@color/green_4"
-            android:text="저장"
+            android:text="수정 완료"
             android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
