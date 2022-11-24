@@ -44,10 +44,10 @@ class DeleteRecordFragment : Fragment() {
 
         //예시 data
         dataList.apply {
-            add(DeletedRecordData("A","2022.11.22 22:15"))
-            add(DeletedRecordData("B","2022.11.22 22:16"))
-            add(DeletedRecordData("C","2022.11.22 22:17"))
-            add(DeletedRecordData("D","2022.11.22 22:18"))
+            add(DeletedRecordData("문현주","2022.11.22 22:15"))
+            add(DeletedRecordData("박상철","2022.11.22 22:16"))
+            add(DeletedRecordData("김영길","2022.11.22 22:17"))
+            add(DeletedRecordData("유영식","2022.11.22 22:18"))
         }
 //                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 

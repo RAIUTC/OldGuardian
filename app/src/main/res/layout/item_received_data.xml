@@ -6,7 +6,11 @@
     android:background="@color/green_9"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/white"
+        />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -89,9 +93,4 @@
             android:textColor="@color/black"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/white"
-        />
 </LinearLayout>

@@ -48,16 +48,16 @@ class ReceivedRecordFragment : Fragment() {
 
         //확인용 데이터들. 실제 구현할 떄 삭제해도돼요
         dataList.apply {
-            add(ReceivedRecordData("A","2022.11.22 22:15","문자"))
-            add(ReceivedRecordData("A","2022.11.22 22:16","전화"))
-            add(ReceivedRecordData("C","2022.11.22 22:17","문자"))
-            add(ReceivedRecordData("D","2022.11.22 22:18","문자"))
-            add(ReceivedRecordData("D","2022.11.22 22:19","문자"))
-            add(ReceivedRecordData("A","2022.11.22 22:20","문자"))
-            add(ReceivedRecordData("D","2022.11.22 22:21","문자"))
-            add(ReceivedRecordData("B","2022.11.22 22:22","문자"))
-            add(ReceivedRecordData("A","2022.11.22 22:23","문자"))
-            add(ReceivedRecordData("C","2022.11.22 22:24","문자"))
+            add(ReceivedRecordData("박화자","2022.11.22 22:15","문자"))
+            add(ReceivedRecordData("김성진","2022.11.22 22:16","전화"))
+            add(ReceivedRecordData("박화자","2022.11.22 22:17","문자"))
+            add(ReceivedRecordData("이영자","2022.11.22 22:18","문자"))
+            add(ReceivedRecordData("김미정","2022.11.22 22:19","문자"))
+            add(ReceivedRecordData("최정숙","2022.11.22 22:20","문자"))
+            add(ReceivedRecordData("김영호","2022.11.22 22:21","문자"))
+            add(ReceivedRecordData("신영식","2022.11.22 22:22","문자"))
+            add(ReceivedRecordData("박영길","2022.11.22 22:23","전화"))
+            add(ReceivedRecordData("김정수","2022.11.22 22:24","전화"))
         }
 //                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 //                adapter.items = dataList

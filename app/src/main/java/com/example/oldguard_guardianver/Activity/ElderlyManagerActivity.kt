@@ -114,13 +114,13 @@ class ElderlyManagerActivity : AppCompatActivity() {
 
         //예시 어르신 list
         dataList.apply {
-            add(GuestLoginRequest("로그인코드","어르신1"))
-            add(GuestLoginRequest("로그인코드","어르신2"))
-            add(GuestLoginRequest("로그인코드","어르신3"))
-            add(GuestLoginRequest("로그인코드","어르신4"))
-            add(GuestLoginRequest("로그인코드","어르신5"))
-            add(GuestLoginRequest("로그인코드","어르신6"))
-            add(GuestLoginRequest("로그인코드","어르신7"))
+            add(GuestLoginRequest("로그인코드","강순자"))
+            add(GuestLoginRequest("로그인코드","김영호"))
+            add(GuestLoginRequest("로그인코드","박정남"))
+            add(GuestLoginRequest("로그인코드","김종수"))
+            add(GuestLoginRequest("로그인코드","서영자"))
+            add(GuestLoginRequest("로그인코드","문현숙"))
+            add(GuestLoginRequest("로그인코드","차영일"))
         }
 //                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 
