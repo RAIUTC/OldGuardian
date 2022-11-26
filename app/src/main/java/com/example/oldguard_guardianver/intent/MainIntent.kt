@@ -1,16 +1,13 @@
 package com.example.oldguard_guardianver.intent
 
-import android.app.Activity.RESULT_OK
-import android.app.appsearch.AppSearchResult.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.provider.FontsContractCompat.FontRequestCallback.RESULT_OK
 import com.example.oldguard_guardianver.Activity.ElderlyManagerActivity
 import com.example.oldguard_guardianver.App
 import com.example.oldguard_guardianver.HowIService
-import com.example.oldguard_guardianver.Request.GuestNameResponse
+import com.example.oldguard_guardianver.Request.GuestListResponse
 import com.example.oldguard_guardianver.databinding.ActivityCodeIssueBinding
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -30,7 +27,8 @@ class MainIntent : AppCompatActivity() {
         viewBinding = ActivityCodeIssueBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
         super.onCreate(savedInstanceState)
-        var request = GuestNameResponse("name")
+
+        var request = GuestListResponse(0L,"name")
         var gson = GsonBuilder().setLenient().create()
         val client = OkHttpClient.Builder().addInterceptor { chain ->
             val newRequest: Request = chain.request().newBuilder()
@@ -47,10 +45,11 @@ class MainIntent : AppCompatActivity() {
             .build()
         var server = retrofit.create(HowIService::class.java)
         var temp = ""
-        server.getResponse(request).enqueue(object : Callback<String> {
-            override fun onFailure(call: Call<String>, t: Throwable) {
+        server.getResponse(request).enqueue(object : Callback <List<GuestListResponse>> {
+            override fun onFailure(call: Call<List<GuestListResponse>>, t: Throwable) {
+                Log.e("실패",t.toString())
             }
-            override fun onResponse(call: Call<String>, response: Response<String>) {
+            override fun onResponse(call: Call<List<GuestListResponse>>, response: Response<List<GuestListResponse>>) {
                 Log.d("성공", response.body().toString().substring(9,12))
                 temp = response.body().toString().substring(9,12)
             }

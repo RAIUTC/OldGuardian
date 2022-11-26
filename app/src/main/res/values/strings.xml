@@ -9,9 +9,9 @@
 
     <!-- Kakao KEY설정[AndroidManifest.xml에도 설정]-->
     <!-- Kakao-init에서 사용 -->
-    <string name="kakao_app_key">163c5d0e8f4049644de95183bba01027</string>
+    <string name="kakao_app_key">07077566212b132f3ff087ff9a60aeb6</string>
     <!-- AndroidManifest.xml에서 사용 -->
-    <string name="kakao_app_key2">kakao163c5d0e8f4049644de95183bba01027</string>
+    <string name="kakao_app_key2">kakao07077566212b132f3ff087ff9a60aeb6</string>
     <string-array name="spinner_entries">
         <item>최신순</item>
         <item>오래된순</item>

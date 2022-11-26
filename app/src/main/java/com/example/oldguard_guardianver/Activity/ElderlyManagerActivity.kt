@@ -14,9 +14,7 @@ import com.example.oldguard_guardianver.Adapter.ElderInfoRVAdapter
 import com.example.oldguard_guardianver.Adapter.ElderManagerRVAdapter
 import com.example.oldguard_guardianver.App
 import com.example.oldguard_guardianver.HowIService
-import com.example.oldguard_guardianver.Request.AddInfoRequest
-import com.example.oldguard_guardianver.Request.AllRequest
-import com.example.oldguard_guardianver.Request.GuestLoginRequest
+import com.example.oldguard_guardianver.Request.*
 import com.example.oldguard_guardianver.databinding.ActivityElderlyManagerBinding
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -49,36 +47,51 @@ class ElderlyManagerActivity : AppCompatActivity() {
         //LayoutManager 설정
         viewBinding.elderManagerRv.layoutManager = manager
 
-//        var request = AllRequest("guestName","name","phoneNumber")
-//        var gson = GsonBuilder().setLenient().create()
-//
-//        var r = ""
-//        val client = OkHttpClient.Builder().addInterceptor { chain ->
-//            val newRequest: Request = chain.request().newBuilder()
-//                .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
-//                .build()
-//            chain.proceed(newRequest)
-//        }.build()
-//        var retrofit = Retrofit.Builder()
-//            .client(client)
-//            .baseUrl("http://10.0.2.2:8080")
-//            .addConverterFactory(ScalarsConverterFactory.create())
-//            .addConverterFactory(GsonConverterFactory.create(gson))
-//            .build()
-//        var server = retrofit.create(HowIService::class.java)
-//        server.getLoginRequest(request,request,request).enqueue(object : Callback<AllRequest> {
-//            override fun onFailure(call: Call<AllRequest>, t: Throwable) {
-//            }
-//            override fun onResponse(call: Call<AllRequest>, response: Response<AllRequest>) {
-//                Log.d("성공", response.body().toString())
-//                request.guestName = response.body()?.guestName.toString()
-//                request.name = response.body()?.name.toString()
-//                request.phoneNumber=response.body()?.phoneNumber.toString()
-//                Log.d("게스트이름",request.guestName)
-//                Log.d("이름",request.name)
-//                Log.d("전화번호",request.phoneNumber)
-//            }
-//        })
+        var gson = GsonBuilder().setLenient().create()
+
+        var r = ""
+        val client = OkHttpClient.Builder().addInterceptor { chain ->
+            val newRequest: Request = chain.request().newBuilder()
+                .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
+                .build()
+            chain.proceed(newRequest)
+        }.build()
+        var retrofit = Retrofit.Builder()
+            .client(client)
+            .baseUrl("http://10.0.2.2:8080")
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+        var server = retrofit.create(HowIService::class.java)
+
+        var tempName = ""
+        var tempContacts = Contact(0L,"contact","name")
+        var tempMessageTime = 0L
+        var tempCallTime = 0L
+        var tempEmergencyTime = 0L
+        var tempSleepTime = ""
+        var tempEndTime = ""
+
+
+        server.getAllResponse(0L).enqueue(object : Callback<GuestResponse> {
+            override fun onFailure(call: Call<GuestResponse>, t: Throwable) {
+                Log.e("실패",t.toString())
+            }
+            override fun onResponse(call: Call<GuestResponse>, response: Response<GuestResponse>) {
+                Log.d("성공", response.body().toString())
+                Log.d("contact", response.body()?.guestName.toString())
+//                if(response.body().toString() != null){
+//                    Log.d("if실행", "왜?")
+//                    tempName = response.body()?.guestName.toString()
+//                    tempContacts= response.body()?.contacts?.get(0)!!
+//                    tempMessageTime = response.body()?.messageTime!!
+//                    tempCallTime = response.body()?.callTime!!
+//                    tempEmergencyTime = response.body()?.emergencyTime!!
+//                    tempSleepTime = response.body()?.sleepStartTime.toString()
+//                    tempEndTime = response.body()?.sleepEndTime.toString()
+//                }
+            }
+        })
 
         //추가하기 버튼 눌렀을 때
         viewBinding.addBtn.setOnClickListener {
@@ -114,13 +127,13 @@ class ElderlyManagerActivity : AppCompatActivity() {
 
         //예시 어르신 list
         dataList.apply {
-            add(GuestLoginRequest("로그인코드","강순자"))
-            add(GuestLoginRequest("로그인코드","김영호"))
-            add(GuestLoginRequest("로그인코드","박정남"))
-            add(GuestLoginRequest("로그인코드","김종수"))
-            add(GuestLoginRequest("로그인코드","서영자"))
-            add(GuestLoginRequest("로그인코드","문현숙"))
-            add(GuestLoginRequest("로그인코드","차영일"))
+//            add(GuestLoginRequest("로그인코드","강순자"))
+//            add(GuestLoginRequest("로그인코드","김영호"))
+//            add(GuestLoginRequest("로그인코드","박정남"))
+//            add(GuestLoginRequest("로그인코드","김종수"))
+//            add(GuestLoginRequest("로그인코드","서영자"))
+//            add(GuestLoginRequest("로그인코드","문현숙"))
+//            add(GuestLoginRequest("로그인코드","차영일"))
         }
 //                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 

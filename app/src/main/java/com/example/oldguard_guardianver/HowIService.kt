@@ -6,29 +6,30 @@ import retrofit2.http.*
 
 
 interface HowIService {
-    @GET("/api/v1/guest/name")
+    //게스트목록조회
+    @GET("/api/v1/guest/list")
     fun getResponse(
-        @Query("name") name : GuestNameResponse
-    ): Call<String>
+        @Query("guest") guest: GuestListResponse,
+    ): Call <List<GuestListResponse>>
 
+    //게스트 정보 조회
     @GET("/api/v1/guest")
-    fun getLoginRequest(
-        @Query("guestName") guestName: AllRequest,
-        @Query("name") name :AllRequest,
-        @Query("phoneNumber") phoneNumber: AllRequest,
-    ): Call<AllRequest>
+    fun getAllResponse(
+        @Query("id") id: Long
+    ): Call<GuestResponse>
 
     @FormUrlEncoded
     @POST("/login")
     fun postLoginRequest(@Field("token") token: String): Call<String>
 
     //코드 이름 추가
-    @POST("/api/v1/member/guest")
+    @POST("/api/v1/guest")
     fun postGuestLoginRequest(
         @Body request: GuestLoginRequest
     ): Call<String>
 
-    //이름 연락 추가
+    //Contact Controller
+    //연락처 등록
     @POST("/api/v1/contact")
     fun postAddInfoRequest(
         @Body request: AddInfoRequest

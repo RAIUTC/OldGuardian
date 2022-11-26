@@ -42,9 +42,9 @@ class ElderInfoActivity : AppCompatActivity() {
 
         //test용 추가. 데이터 관리할 때 변경 필요
         dataList.apply {
-            add(AddInfoRequest("김복원", "01077437539"))
-            add(AddInfoRequest("김복투", "01077437539"))
-            add(AddInfoRequest("김복쓰리", "01077437539"))
+            add(AddInfoRequest("김복원", 0L,"01077437539"))
+            add(AddInfoRequest("김복투", 1L,"01077437539"))
+            add(AddInfoRequest("김복쓰리", 2L, "01077437539"))
         }
 //        viewBinding.elderName.text= data.getStringExtra("guestName")
 //        viewBinding.guardianName1.text = data.getStringExtra("name")
@@ -93,7 +93,7 @@ class ElderInfoActivity : AppCompatActivity() {
                 dataList.apply {
                     if (mPosition != null) {
                         //보호자 이름, 전화번호 수정
-                        set(mPosition, AddInfoRequest(mName.toString(), mNumber.toString()))
+                        //set(mPosition, AddInfoRequest(mName.toString(), mNumber.toString()))
                         elderInfoRVAdapter.notifyItemChanged(mPosition)
                     }
                 }

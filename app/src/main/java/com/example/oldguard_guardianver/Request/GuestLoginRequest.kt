@@ -6,5 +6,6 @@ import com.google.gson.annotations.SerializedName
 //일단 elder Manager화면에 이 데이터 클래스 썼어요
 data class GuestLoginRequest(
     @SerializedName("code") val code: String?,
+    @SerializedName("address") val address : String?,
     @SerializedName("name") val name: String?
 )

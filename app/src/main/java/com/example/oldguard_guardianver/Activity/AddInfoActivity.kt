@@ -16,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 /**   첫번째 어르신 추가 화면   */
 class AddInfoActivity : AppCompatActivity() {
@@ -40,7 +41,7 @@ class AddInfoActivity : AppCompatActivity() {
         viewBinding.nextBtn.setOnClickListener() {
             var name = viewBinding.editGuardianName1.text.toString()
             var number = viewBinding.editGuardianNumber1.text.toString()
-            var request = AddInfoRequest(name,number)
+            var request = AddInfoRequest(name,0L, number)
             var gson = GsonBuilder().setLenient().create()
 
 
@@ -54,14 +55,16 @@ class AddInfoActivity : AppCompatActivity() {
             var retrofit = Retrofit.Builder()
                 .client(client)
                 .baseUrl("http://10.0.2.2:8080")
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
             var server = retrofit.create(HowIService::class.java)
             server.postAddInfoRequest(request).enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.e("실패",t.toString())
                 }
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-
+                    Log.d("성공",response.body().toString())
                 }
             })
 

@@ -17,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 /**   어르신 추가 시, 어르신 성함, 코드 주소 입력받는 화면   */
 class AuthCodeActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class AuthCodeActivity : AppCompatActivity() {
 
         //다음 버튼 눌렀을 때
         viewBinding.nextBtn.setOnClickListener {
-            var request = GuestLoginRequest(viewBinding.editLoginCode.text.toString(),viewBinding.editElderName.text.toString())
+            var request = GuestLoginRequest(viewBinding.editLoginCode.text.toString(),viewBinding.editGuardianAddress.text.toString(),viewBinding.editElderName.text.toString())
             var gson = GsonBuilder().setLenient().create()
             var address = viewBinding.editGuardianAddress.text.toString()       //입력받은 주소지 저장
 
@@ -45,15 +46,17 @@ class AuthCodeActivity : AppCompatActivity() {
             var retrofit = Retrofit.Builder()
                 .client(client)
                 .baseUrl("http://10.0.2.2:8080")
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
             var server = retrofit.create(HowIService::class.java)
             server.postGuestLoginRequest(request).enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-
+                    Log.e("실패", t.toString())
                 }
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-
+                    Log.d("성공",response.body().toString())
+                    Log.d("이름",request.name.toString())
                 }
             })
             val intent = Intent(this, ContactIntent::class.java)
