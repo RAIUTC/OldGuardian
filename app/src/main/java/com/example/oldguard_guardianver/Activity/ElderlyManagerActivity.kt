@@ -18,6 +18,7 @@ import com.example.oldguard_guardianver.Request.AddInfoRequest
 import com.example.oldguard_guardianver.Request.AllRequest
 import com.example.oldguard_guardianver.Request.GuestLoginRequest
 import com.example.oldguard_guardianver.databinding.ActivityElderlyManagerBinding
+import com.example.oldguard_guardianver.intent.PatternIntent
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -130,6 +131,22 @@ class ElderlyManagerActivity : AppCompatActivity() {
         }
         var intent : Intent
 
+        //탈퇴하기 버튼 눌렀을 때
+        viewBinding.withdraw.setOnClickListener() {
+            val builder = AlertDialog.Builder(this)
+                .setTitle("경고")
+                .setTitle("정말 탈퇴하시겠습니까?\n모든 데이터가 삭제되고,\n 복구할 수 없습니다.\n\n")
+                .setNegativeButton("취소",
+                    DialogInterface.OnClickListener { dialog, which ->
+                        //아무런 행동 없음.
+                    })
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, which ->
+                        //여기에 전체 delete하는 기능 구현하기
+                        finish()    //Activity 종료
+                    })
+            builder.show()
+        }
         //아이템 전체를 눌렀을 떄
         elderManagerRVAdapter.setOnItemClickListener(object : ElderManagerRVAdapter.OnItemClickListener {
             override fun onItemClick(view : View, data : GuestLoginRequest, position : Int) {

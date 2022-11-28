@@ -26,6 +26,19 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textStyle="bold"
             />
+        <Button
+            android:id="@+id/withdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="13dp"
+            android:text="탈퇴하기"
+            android:background="@android:color/transparent"
+            android:textColor="@color/gray"
+
+            />
         <View
             android:id="@+id/title_bar_line"
             android:layout_width="match_parent"
