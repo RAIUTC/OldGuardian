@@ -32,7 +32,8 @@ class AuthCodeActivity : AppCompatActivity() {
 
         //다음 버튼 눌렀을 때
         viewBinding.nextBtn.setOnClickListener {
-            var request = GuestLoginRequest(viewBinding.editLoginCode.text.toString(),viewBinding.editGuardianAddress.text.toString(),viewBinding.editElderName.text.toString())
+                                                                    //,viewBinding.editGuardianAddress.text.toString() -> 데이터 받는 값에 주소지 추가 시 사용될 매개변수
+            var request = GuestLoginRequest(viewBinding.editLoginCode.text.toString(),viewBinding.editElderName.text.toString())
             var gson = GsonBuilder().setLenient().create()
             var address = viewBinding.editGuardianAddress.text.toString()       //입력받은 주소지 저장
 

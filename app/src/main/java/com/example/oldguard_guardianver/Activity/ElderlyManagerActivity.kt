@@ -72,7 +72,6 @@ class ElderlyManagerActivity : AppCompatActivity() {
         var tempSleepTime = ""
         var tempEndTime = ""
 
-
         server.getAllResponse(0L).enqueue(object : Callback<GuestResponse> {
             override fun onFailure(call: Call<GuestResponse>, t: Throwable) {
                 Log.e("실패",t.toString())
@@ -80,16 +79,23 @@ class ElderlyManagerActivity : AppCompatActivity() {
             override fun onResponse(call: Call<GuestResponse>, response: Response<GuestResponse>) {
                 Log.d("성공", response.body().toString())
                 Log.d("contact", response.body()?.guestName.toString())
-//                if(response.body().toString() != null){
-//                    Log.d("if실행", "왜?")
-//                    tempName = response.body()?.guestName.toString()
-//                    tempContacts= response.body()?.contacts?.get(0)!!
-//                    tempMessageTime = response.body()?.messageTime!!
-//                    tempCallTime = response.body()?.callTime!!
-//                    tempEmergencyTime = response.body()?.emergencyTime!!
-//                    tempSleepTime = response.body()?.sleepStartTime.toString()
-//                    tempEndTime = response.body()?.sleepEndTime.toString()
-//                }
+                if(response.body() != null){
+                    tempName = response.body()?.guestName.toString()
+                    tempContacts= response.body()?.contacts?.get(0)!!
+                    tempMessageTime = response.body()?.messageTime!!
+                    tempCallTime = response.body()?.callTime!!
+                    tempEmergencyTime = response.body()?.emergencyTime!!
+                    tempSleepTime = response.body()?.sleepStartTime.toString()
+                    tempEndTime = response.body()?.sleepEndTime.toString()
+
+                    dataList.apply {
+                        add(GuestLoginRequest("ABCDEF", tempName))
+                    }
+                    elderManagerRVAdapter.notifyItemInserted(elderManagerRVAdapter.itemCount)
+                    if(dataList.isNotEmpty()) {
+                        viewBinding.letsStartText.visibility = View.INVISIBLE
+                    }
+                }
             }
         })
 
@@ -124,8 +130,6 @@ class ElderlyManagerActivity : AppCompatActivity() {
             }
         }
 
-
-        //예시 어르신 list
         dataList.apply {
 //            add(GuestLoginRequest("로그인코드","강순자"))
 //            add(GuestLoginRequest("로그인코드","김영호"))
@@ -142,6 +146,23 @@ class ElderlyManagerActivity : AppCompatActivity() {
             viewBinding.letsStartText.visibility = View.INVISIBLE
         }
         var intent : Intent
+
+        //탈퇴하기 버튼 눌렀을 때
+        viewBinding.withdraw.setOnClickListener() {
+            val builder = AlertDialog.Builder(this)
+                .setTitle("경고")
+                .setTitle("정말 탈퇴하시겠습니까?\n모든 데이터가 삭제되고,\n 복구할 수 없습니다.\n\n")
+                .setNegativeButton("취소",
+                    DialogInterface.OnClickListener { dialog, which ->
+                        //아무런 행동 없음.
+                    })
+                .setPositiveButton("확인",
+                    DialogInterface.OnClickListener { dialog, which ->
+                        //여기에 전체 delete하는 기능 구현하기
+                        finish()    //Activity 종료
+                    })
+            builder.show()
+        }
 
         //아이템 전체를 눌렀을 떄
         elderManagerRVAdapter.setOnItemClickListener(object : ElderManagerRVAdapter.OnItemClickListener {
