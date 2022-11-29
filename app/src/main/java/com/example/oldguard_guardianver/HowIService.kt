@@ -6,51 +6,86 @@ import retrofit2.http.*
 
 
 interface HowIService {
-    //게스트목록조회
-    @GET("/api/v1/guest/list")
-    fun getResponse(
-        @Query("guest") guest: GuestListResponse,
-    ): Call <List<GuestListResponse>>
-
-    //게스트 정보 조회
-    @GET("/api/v1/guest")
-    fun getAllResponse(
-        @Query("id") id: Long
-    ): Call<GuestResponse>
-
+    //auth-controller
+    //카카오톡 로그인
     @FormUrlEncoded
     @POST("/login")
     fun postLoginRequest(@Field("token") token: String): Call<String>
 
-    //코드 이름 추가
-    @POST("/api/v1/guest")
-    fun postGuestLoginRequest(
-        @Body request: GuestLoginRequest
-    ): Call<String>
+    //code-controller
+    //인증코드 전송
 
-    //Contact Controller
+    //contact-controller
+    //연락처정보조회
+    @GET("/api/v1/contact")
+    fun getContacts(
+        @Query("id") id : Long
+    ):Call<List<ContactResponse>>
+
     //연락처 등록
     @POST("/api/v1/contact")
     fun postAddInfoRequest(
         @Body request: AddInfoRequest
     ): Call<String>
 
-    //이름 연락 추가
-    @POST("/api/v1/contact")
-    fun postCorrectionRequest(
-        @Body request: CorrectionRequest
+    //연락처 삭제 //@DELETE("/api/v1/contact")
+    @HTTP(method = "DELETE", path = "/api/v1/contact", hasBody = true)
+    fun deleteContact(
+        @Body request: DeleteContactRequest
     ): Call<String>
 
-    //자는시간 일어나는시간 추가
-    @PATCH("/api/v1/guest/sleep")
-    fun postClockRequest(
-        @Body request: ClockRequest
+    //연락처 수정
+    @PATCH("api/v1/contact")
+    fun EditContact(
+        @Body request: EditContactRequest
     ): Call<String>
 
+    //guest-controller
+    //게스트 정보 조회
+    @GET("/api/v1/guest")
+    fun getAllResponse(
+        @Query("id") id: Long
+    ): Call<GuestResponse>
+
+    //게스트 회원 가입
+    @POST("/api/v1/guest")
+    fun postGuestLoginRequest(
+        @Body request: GuestLoginRequest
+    ): Call<String>
+
+    //게스트 정보 수정
+    @PUT("/api/v1/guest")
+    fun EditGuestInfo(
+        @Body request: EditGuestInfoRequest
+    ):Call<String>
+
+    //게스트 정보 삭제
+
+    //시간제한 설정
     @POST("/api/v1/guest/limit")
     fun postTimeLimitRequest(
         @Body request: TimeLimitRequest
     ): Call<String>
 
+    //게스트목록조회
+    @GET("/api/v1/guest/list")
+    fun getResponse(
+        @Query("guest") guest: GuestListResponse,
+    ): Call <List<GuestListResponse>>
 
+    //게스트 정보 복구
+
+    //수면시간 설정
+    @PATCH("/api/v1/guest/sleep")
+    fun postClockRequest(
+        @Body request: ClockRequest
+    ): Call<String>
+
+    //member-controller
+    //사용자 회원탈퇴
+
+    //record-controller
+    //삭제한 어르신 기록 조회
+
+    //전송한 연락 조회
 }

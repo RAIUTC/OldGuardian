@@ -81,7 +81,9 @@ class ElderlyManagerActivity : AppCompatActivity() {
                 Log.d("contact", response.body()?.guestName.toString())
                 if(response.body() != null){
                     tempName = response.body()?.guestName.toString()
-                    tempContacts= response.body()?.contacts?.get(0)!!
+                    if(response.body()?.contacts?.size != 0) {
+                        tempContacts= response.body()?.contacts?.get(0)!!
+                    }
                     tempMessageTime = response.body()?.messageTime!!
                     tempCallTime = response.body()?.callTime!!
                     tempEmergencyTime = response.body()?.emergencyTime!!
@@ -131,13 +133,13 @@ class ElderlyManagerActivity : AppCompatActivity() {
         }
 
         dataList.apply {
-//            add(GuestLoginRequest("로그인코드","강순자"))
-//            add(GuestLoginRequest("로그인코드","김영호"))
-//            add(GuestLoginRequest("로그인코드","박정남"))
-//            add(GuestLoginRequest("로그인코드","김종수"))
-//            add(GuestLoginRequest("로그인코드","서영자"))
-//            add(GuestLoginRequest("로그인코드","문현숙"))
-//            add(GuestLoginRequest("로그인코드","차영일"))
+            add(GuestLoginRequest("로그인코드","강순자"))
+            add(GuestLoginRequest("로그인코드","김영호"))
+            add(GuestLoginRequest("로그인코드","박정남"))
+            add(GuestLoginRequest("로그인코드","김종수"))
+            add(GuestLoginRequest("로그인코드","서영자"))
+            add(GuestLoginRequest("로그인코드","문현숙"))
+            add(GuestLoginRequest("로그인코드","차영일"))
         }
 //                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 
@@ -168,9 +170,14 @@ class ElderlyManagerActivity : AppCompatActivity() {
         elderManagerRVAdapter.setOnItemClickListener(object : ElderManagerRVAdapter.OnItemClickListener {
             override fun onItemClick(view : View, data : GuestLoginRequest, position : Int) {
                 intent = Intent(this@ElderlyManagerActivity, ElderInfoActivity::class.java)
-//                intent.putExtra("guestName",request.guestName)
-//                intent.putExtra("name",request.name)
-//                intent.putExtra("phoneNumber",request.phoneNumber)
+                intent.putExtra("guestName",tempName)
+                intent.putExtra("contact",tempContacts.contact)
+                intent.putExtra("name",tempContacts.name)
+                intent.putExtra("messageTime",tempMessageTime)
+                intent.putExtra("callTime",tempCallTime)
+                intent.putExtra("emergencyTime",tempEmergencyTime)
+                intent.putExtra("sleepTime",tempSleepTime.substring(0,5))
+                intent.putExtra("endTime",tempEndTime.substring(0,5))
                 startActivity(intent)
             }
         })
