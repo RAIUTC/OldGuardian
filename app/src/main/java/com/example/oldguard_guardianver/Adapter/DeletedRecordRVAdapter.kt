@@ -5,9 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oldguard_guardianver.App
+import com.example.oldguard_guardianver.HowIService
 import com.example.oldguard_guardianver.Request.AddInfoRequest
+import com.example.oldguard_guardianver.Request.DeleteGuestInfoRequest
 import com.example.oldguard_guardianver.Request.DeletedRecordData
+import com.example.oldguard_guardianver.Request.RestoreGuestInfoRequest
 import com.example.oldguard_guardianver.databinding.ItemDeletedDataBinding
+import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 /**   삭제했던 어르신 기록(DeletedRecordActivity)의 RecyclerView에서 사용할 어댑터   */
 class DeletedRecordRVAdapter (private var dataList : ArrayList<DeletedRecordData>) : RecyclerView.Adapter<DeletedRecordRVAdapter.ItemViewHolder>() {
@@ -29,6 +42,31 @@ class DeletedRecordRVAdapter (private var dataList : ArrayList<DeletedRecordData
                 dataList.removeAt(position)
                 notifyItemRemoved(position)
                 //btnListener?.onBtnClick(holder.itemView, dataList[position], position)
+                var request1 = RestoreGuestInfoRequest(0L)
+                var gson = GsonBuilder().setLenient().create()
+
+                val client = OkHttpClient.Builder().addInterceptor { chain ->
+                    val newRequest: Request = chain.request().newBuilder()
+                        .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
+                        .build()
+                    chain.proceed(newRequest)
+                }.build()
+                var retrofit = Retrofit.Builder()
+                    .client(client)
+                    .baseUrl("http://10.0.2.2:8080")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build()
+                var server = retrofit.create(HowIService::class.java)
+
+                server.restoreGuestInfo(request1).enqueue(object : Callback<String> {
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                        Log.e("실패",t.toString())
+                    }
+                    override fun onResponse(call: Call<String>, response: Response<String>) {
+                        Log.d("성공", response.body().toString())
+                    }
+                })
             }
         }
     }

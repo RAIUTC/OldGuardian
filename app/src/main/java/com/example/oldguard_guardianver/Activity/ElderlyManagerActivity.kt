@@ -10,7 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.oldguard_guardianver.Adapter.ElderInfoRVAdapter
 import com.example.oldguard_guardianver.Adapter.ElderManagerRVAdapter
 import com.example.oldguard_guardianver.App
 import com.example.oldguard_guardianver.HowIService
@@ -196,6 +195,31 @@ class ElderlyManagerActivity : AppCompatActivity() {
                     DialogInterface.OnClickListener { dialog, which ->
                         dataList.removeAt(position)
                         elderManagerRVAdapter.notifyItemRemoved(position)
+                        var request1 = DeleteGuestInfoRequest(0L)
+                        var gson = GsonBuilder().setLenient().create()
+
+                        val client = OkHttpClient.Builder().addInterceptor { chain ->
+                            val newRequest: Request = chain.request().newBuilder()
+                                .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
+                                .build()
+                            chain.proceed(newRequest)
+                        }.build()
+                        var retrofit = Retrofit.Builder()
+                            .client(client)
+                            .baseUrl("http://10.0.2.2:8080")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create(gson))
+                            .build()
+                        var server = retrofit.create(HowIService::class.java)
+
+                        server.deleteGuestInfo(request1).enqueue(object : Callback<String> {
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Log.e("실패",t.toString())
+                            }
+                            override fun onResponse(call: Call<String>, response: Response<String>) {
+                                Log.d("성공", response.body().toString())
+                            }
+                        })
                     })
                 builder.show()
             }

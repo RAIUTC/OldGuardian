@@ -60,6 +60,11 @@ interface HowIService {
     ):Call<String>
 
     //게스트 정보 삭제
+    @HTTP(method = "DELETE", path = "/api/v1/guest", hasBody = true)
+//    @DELETE()
+    fun deleteGuestInfo(
+        @Body request: DeleteGuestInfoRequest
+    ): Call<String>
 
     //시간제한 설정
     @POST("/api/v1/guest/limit")
@@ -74,6 +79,10 @@ interface HowIService {
     ): Call <List<GuestListResponse>>
 
     //게스트 정보 복구
+    @PATCH("api/v1/guest/restoration")
+    fun restoreGuestInfo(
+        @Body request: RestoreGuestInfoRequest
+    ): Call<String>
 
     //수면시간 설정
     @PATCH("/api/v1/guest/sleep")
