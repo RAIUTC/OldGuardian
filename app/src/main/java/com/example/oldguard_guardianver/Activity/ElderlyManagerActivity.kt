@@ -64,7 +64,9 @@ class ElderlyManagerActivity : AppCompatActivity() {
         var server = retrofit.create(HowIService::class.java)
 
         var tempName = ""
-        var tempContacts = Contact(0L,"contact","name")
+        var tempContacts0 = Contact(0L,"contact","name")
+        var tempContacts02 = Contact(1L,"contact","name")
+        var tempContacts03 = Contact(2L,"contact","name")
         var tempMessageTime = 0L
         var tempCallTime = 0L
         var tempEmergencyTime = 0L
@@ -81,7 +83,16 @@ class ElderlyManagerActivity : AppCompatActivity() {
                 if(response.body() != null){
                     tempName = response.body()?.guestName.toString()
                     if(response.body()?.contacts?.size != 0) {
-                        tempContacts= response.body()?.contacts?.get(0)!!
+                        if (response.body()?.contacts?.get(0) != null) {
+                            tempContacts0 = response.body()?.contacts?.get(0)!!
+                        }
+                        if (response.body()?.contacts?.get(1) != null) {
+                            Log.d("1번 보호자", response.body()?.contacts?.get(1)!!.toString())
+                            tempContacts02 = response.body()?.contacts?.get(1)!!
+                        }
+                        if (response.body()?.contacts?.get(2) != null) {
+                            tempContacts03 = response.body()?.contacts?.get(2)!!
+                        }
                     }
                     tempMessageTime = response.body()?.messageTime!!
                     tempCallTime = response.body()?.callTime!!
@@ -91,6 +102,142 @@ class ElderlyManagerActivity : AppCompatActivity() {
 
                     dataList.apply {
                         add(GuestLoginRequest("ABCDEF", tempName))
+                    }
+                    elderManagerRVAdapter.notifyItemInserted(elderManagerRVAdapter.itemCount)
+                    if(dataList.isNotEmpty()) {
+                        viewBinding.letsStartText.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        })
+        var tempName1 = ""
+        var tempContacts1 = Contact(0L,"contact","name")
+        var tempContacts12 = Contact(1L,"contact","name")
+        var tempContacts13 = Contact(2L,"contact","name")
+        var tempMessageTime1 = 0L
+        var tempCallTime1 = 0L
+        var tempEmergencyTime1 = 0L
+        var tempSleepTime1 = ""
+        var tempEndTime1 = ""
+        server.getAllResponse(1L).enqueue(object : Callback<GuestResponse> {
+            override fun onFailure(call: Call<GuestResponse>, t: Throwable) {
+                Log.e("실패",t.toString())
+            }
+            override fun onResponse(call: Call<GuestResponse>, response: Response<GuestResponse>) {
+                Log.d("성공", response.body().toString())
+                Log.d("contact", response.body()?.guestName.toString())
+                if(response.body() != null){
+                    tempName1 = response.body()?.guestName.toString()
+                    if(response.body()?.contacts?.size != 0) {
+                        if (response.body()?.contacts?.get(0)!! != null){
+                            tempContacts1= response.body()?.contacts?.get(0)!!
+                        }
+                        if (response.body()?.contacts?.get(1)!! != null) {
+                            tempContacts12= response.body()?.contacts?.get(1)!!
+                        }
+                        if (response.body()?.contacts?.get(2)!! != null) {
+                            tempContacts13= response.body()?.contacts?.get(2)!!
+                        }
+                    }
+                    tempMessageTime1 = response.body()?.messageTime!!
+                    tempCallTime1 = response.body()?.callTime!!
+                    tempEmergencyTime1 = response.body()?.emergencyTime!!
+                    tempSleepTime1 = response.body()?.sleepStartTime.toString()
+                    tempEndTime1 = response.body()?.sleepEndTime.toString()
+
+                    dataList.apply {
+                        add(GuestLoginRequest("ABCDEF", tempName1))
+                    }
+                    elderManagerRVAdapter.notifyItemInserted(elderManagerRVAdapter.itemCount)
+                    if(dataList.isNotEmpty()) {
+                        viewBinding.letsStartText.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        })
+
+        var tempName2 = ""
+        var tempContacts2 = Contact(0L,"contact","name")
+        var tempContacts22 = Contact(1L,"contact","name")
+        var tempContacts23 = Contact(2L,"contact","name")
+        var tempMessageTime2 = 0L
+        var tempCallTime2 = 0L
+        var tempEmergencyTime2 = 0L
+        var tempSleepTime2 = ""
+        var tempEndTime2 = ""
+        server.getAllResponse(2L).enqueue(object : Callback<GuestResponse> {
+            override fun onFailure(call: Call<GuestResponse>, t: Throwable) {
+                Log.e("실패",t.toString())
+            }
+            override fun onResponse(call: Call<GuestResponse>, response: Response<GuestResponse>) {
+                Log.d("성공", response.body().toString())
+                Log.d("contact", response.body()?.guestName.toString())
+                if(response.body() != null){
+                    tempName2 = response.body()?.guestName.toString()
+                    if(response.body()?.contacts?.size != 0) {
+                        if (response.body()?.contacts?.get(0)!! != null){
+                            tempContacts2= response.body()?.contacts?.get(0)!!
+                        }
+                        if (response.body()?.contacts?.get(1)!! != null) {
+                            tempContacts22= response.body()?.contacts?.get(1)!!
+                        }
+                        if (response.body()?.contacts?.get(2)!! != null) {
+                            tempContacts23= response.body()?.contacts?.get(2)!!
+                        }
+                    }
+                    tempMessageTime2 = response.body()?.messageTime!!
+                    tempCallTime2 = response.body()?.callTime!!
+                    tempEmergencyTime2 = response.body()?.emergencyTime!!
+                    tempSleepTime2 = response.body()?.sleepStartTime.toString()
+                    tempEndTime2 = response.body()?.sleepEndTime.toString()
+
+                    dataList.apply {
+                        add(GuestLoginRequest("ABCDEF", tempName2))
+                    }
+                    elderManagerRVAdapter.notifyItemInserted(elderManagerRVAdapter.itemCount)
+                    if(dataList.isNotEmpty()) {
+                        viewBinding.letsStartText.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        })
+        var tempName3 = ""
+        var tempContacts3 = Contact(0L,"contact","name")
+        var tempContacts32 = Contact(1L,"contact","name")
+        var tempContacts33 = Contact(2L,"contact","name")
+        var tempMessageTime3 = 0L
+        var tempCallTime3 = 0L
+        var tempEmergencyTime3 = 0L
+        var tempSleepTime3 = ""
+        var tempEndTime3 = ""
+        server.getAllResponse(3L).enqueue(object : Callback<GuestResponse> {
+            override fun onFailure(call: Call<GuestResponse>, t: Throwable) {
+                Log.e("실패",t.toString())
+            }
+            override fun onResponse(call: Call<GuestResponse>, response: Response<GuestResponse>) {
+                Log.d("성공", response.body().toString())
+                Log.d("contact", response.body()?.guestName.toString())
+                if(response.body() != null){
+                    tempName3 = response.body()?.guestName.toString()
+                    if(response.body()?.contacts?.size != 0) {
+                        if (response.body()?.contacts?.get(0)!! != null){
+                            tempContacts3= response.body()?.contacts?.get(0)!!
+                        }
+                        if (response.body()?.contacts?.get(1)!! != null) {
+                            tempContacts32= response.body()?.contacts?.get(1)!!
+                        }
+                        if (response.body()?.contacts?.get(2)!! != null) {
+                            tempContacts33= response.body()?.contacts?.get(2)!!
+                        }
+                    }
+                    tempMessageTime3 = response.body()?.messageTime!!
+                    tempCallTime3 = response.body()?.callTime!!
+                    tempEmergencyTime3 = response.body()?.emergencyTime!!
+                    tempSleepTime3 = response.body()?.sleepStartTime.toString()
+                    tempEndTime3 = response.body()?.sleepEndTime.toString()
+
+                    dataList.apply {
+                        add(GuestLoginRequest("ABCDEF", tempName3))
                     }
                     elderManagerRVAdapter.notifyItemInserted(elderManagerRVAdapter.itemCount)
                     if(dataList.isNotEmpty()) {
@@ -131,15 +278,15 @@ class ElderlyManagerActivity : AppCompatActivity() {
             }
         }
 
-        dataList.apply {
-            add(GuestLoginRequest("로그인코드","강순자"))
-            add(GuestLoginRequest("로그인코드","김영호"))
-            add(GuestLoginRequest("로그인코드","박정남"))
-            add(GuestLoginRequest("로그인코드","김종수"))
-            add(GuestLoginRequest("로그인코드","서영자"))
-            add(GuestLoginRequest("로그인코드","문현숙"))
-            add(GuestLoginRequest("로그인코드","차영일"))
-        }
+//        dataList.apply {
+//            add(GuestLoginRequest("로그인코드","강순자"))
+//            add(GuestLoginRequest("로그인코드","김영호"))
+//            add(GuestLoginRequest("로그인코드","박정남"))
+//            add(GuestLoginRequest("로그인코드","김종수"))
+//            add(GuestLoginRequest("로그인코드","서영자"))
+//            add(GuestLoginRequest("로그인코드","문현숙"))
+//            add(GuestLoginRequest("로그인코드","차영일"))
+//        }
 //                새로운 데이터 추가 시 add, 수정 시 set, 삭제 시 removeAt
 
         //dataList가 비어있지 않으면 text 보이지 않게 하기
@@ -160,7 +307,33 @@ class ElderlyManagerActivity : AppCompatActivity() {
                 .setPositiveButton("확인",
                     DialogInterface.OnClickListener { dialog, which ->
                         //여기에 전체 delete하는 기능 구현하기
-                        finish()    //Activity 종료
+                        var gson = GsonBuilder().setLenient().create()
+
+                        val client = OkHttpClient.Builder().addInterceptor { chain ->
+                            val newRequest: Request = chain.request().newBuilder()
+                                .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
+                                .build()
+                            chain.proceed(newRequest)
+                        }.build()
+                        var retrofit = Retrofit.Builder()
+                            .client(client)
+                            .baseUrl("http://10.0.2.2:8080")
+                            .addConverterFactory(ScalarsConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create(gson))
+                            .build()
+                        var server1 = retrofit.create(HowIService::class.java)
+
+                        server1.userMembershipWithdrawal().enqueue(object : Callback<String> {
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Log.e("실패",t.toString())
+                            }
+                            override fun onResponse(call: Call<String>, response: Response<String>) {
+                                Log.d("성공", response.body().toString())
+                            }
+                        })
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+//                        finish()    //Activity 종료
                     })
             builder.show()
         }
@@ -170,8 +343,12 @@ class ElderlyManagerActivity : AppCompatActivity() {
             override fun onItemClick(view : View, data : GuestLoginRequest, position : Int) {
                 intent = Intent(this@ElderlyManagerActivity, ElderInfoActivity::class.java)
                 intent.putExtra("guestName",tempName)
-                intent.putExtra("contact",tempContacts.contact)
-                intent.putExtra("name",tempContacts.name)
+                intent.putExtra("contact",tempContacts0.contact)
+                intent.putExtra("contact1",tempContacts02.contact)
+                intent.putExtra("contact2",tempContacts03.contact)
+                intent.putExtra("name",tempContacts0.name)
+                intent.putExtra("name1",tempContacts02.name)
+                intent.putExtra("name2",tempContacts03.name)
                 intent.putExtra("messageTime",tempMessageTime)
                 intent.putExtra("callTime",tempCallTime)
                 intent.putExtra("emergencyTime",tempEmergencyTime)

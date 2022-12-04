@@ -34,6 +34,34 @@ class AddInfo2Activity : AppCompatActivity() {
 
         //연락처 추가하기 버튼 눌렀을 때
         viewBinding.addNumberBtn.setOnClickListener {
+            var name = viewBinding.editGuardianName2.text.toString()
+            var number = viewBinding.editGuardianNumber2.text.toString()
+            var request = AddInfoRequest(name,0L, number)
+            var gson = GsonBuilder().setLenient().create()
+
+
+            val client = OkHttpClient.Builder().addInterceptor { chain ->
+                val newRequest: Request = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer ${App.token_prefs.accessToken}")
+                    .build()
+                chain.proceed(newRequest)
+            }.build()
+
+            var retrofit = Retrofit.Builder()
+                .client(client)
+                .baseUrl("http://10.0.2.2:8080")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+            var server = retrofit.create(HowIService::class.java)
+            server.postAddInfoRequest(request).enqueue(object : Callback<String> {
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Log.e("실패",t.toString())
+                }
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    Log.d("성공",response.body().toString())
+                }
+            })
             val intent = Intent(this, AddInfo3Activity::class.java)
             startActivity(intent)
         }
@@ -42,7 +70,7 @@ class AddInfo2Activity : AppCompatActivity() {
         viewBinding.nextBtn.setOnClickListener() {
             var name = viewBinding.editGuardianName2.text.toString()
             var number = viewBinding.editGuardianNumber2.text.toString()
-            var request = AddInfoRequest(name,1L, number)
+            var request = AddInfoRequest(name,0L, number)
             var gson = GsonBuilder().setLenient().create()
 
 

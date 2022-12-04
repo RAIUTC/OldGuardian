@@ -45,7 +45,7 @@ interface HowIService {
     @GET("/api/v1/guest")
     fun getAllResponse(
         @Query("id") id: Long
-    ): Call<GuestResponse>
+    ): Call <GuestResponse>
 
     //게스트 회원 가입
     @POST("/api/v1/guest")
@@ -74,12 +74,10 @@ interface HowIService {
 
     //게스트목록조회
     @GET("/api/v1/guest/list")
-    fun getResponse(
-        @Query("guest") guest: GuestListResponse,
-    ): Call <List<GuestListResponse>>
+    fun getResponse(): Call <List<GuestListResponse>>
 
     //게스트 정보 복구
-    @PATCH("api/v1/guest/restoration")
+    @PATCH("/api/v1/guest/restoration")
     fun restoreGuestInfo(
         @Body request: RestoreGuestInfoRequest
     ): Call<String>
@@ -92,9 +90,22 @@ interface HowIService {
 
     //member-controller
     //사용자 회원탈퇴
+    @DELETE("/api/v1/member/me")
+    fun userMembershipWithdrawal(
+
+    ):Call<String>
 
     //record-controller
     //삭제한 어르신 기록 조회
+    @HTTP(method = "GET", path = "/api/v1/record/delete", hasBody = true)
+    //@GET("/api/v1/record/delete")
+    fun getDeletedElderLog(
+        @Body request: DeletedElderLogRequst
+    ): Call <List<DeletedElderLogInfo>>
 
     //전송한 연락 조회
+    @GET("/api/v1/record/send")
+    fun getSendedCoatactLog(
+        @Body request: SendedContactRequest
+    ): Call <List<SendedContactLogInfo>>
 }

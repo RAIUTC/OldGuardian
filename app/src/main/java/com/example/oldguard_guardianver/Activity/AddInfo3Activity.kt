@@ -36,7 +36,7 @@ class AddInfo3Activity : AppCompatActivity() {
         viewBinding.nextBtn.setOnClickListener() {
             var name = viewBinding.editGuardianName3.text.toString()
             var number = viewBinding.editGuardianNumber3.text.toString()
-            var request = AddInfoRequest(name,2L, number)
+            var request = AddInfoRequest(name,0L, number)
             var gson = GsonBuilder().setLenient().create()
 
 

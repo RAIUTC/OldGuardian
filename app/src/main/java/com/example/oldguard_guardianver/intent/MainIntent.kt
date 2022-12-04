@@ -45,12 +45,12 @@ class MainIntent : AppCompatActivity() {
             .build()
         var server = retrofit.create(HowIService::class.java)
         var temp = ""
-        server.getResponse(request).enqueue(object : Callback <List<GuestListResponse>> {
+        server.getResponse().enqueue(object : Callback <List<GuestListResponse>> {
             override fun onFailure(call: Call<List<GuestListResponse>>, t: Throwable) {
                 Log.e("실패",t.toString())
             }
             override fun onResponse(call: Call<List<GuestListResponse>>, response: Response<List<GuestListResponse>>) {
-                Log.d("성공", response.body().toString().substring(9,12))
+                Log.d("성공", response.body().toString())
                 temp = response.body().toString().substring(9,12)
             }
         })

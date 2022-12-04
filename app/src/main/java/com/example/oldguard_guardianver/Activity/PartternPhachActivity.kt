@@ -68,9 +68,10 @@ class PartternPhachActivity : AppCompatActivity() {
                 }
             })
 
-            val intent = Intent(this, ElderInfoActivity::class.java)
+            val intent = Intent(this, ElderlyManagerActivity::class.java)
             setResult(FIX, intent)
-            finish()
+            startActivity(intent)
+//            finish()
         }
     }
 

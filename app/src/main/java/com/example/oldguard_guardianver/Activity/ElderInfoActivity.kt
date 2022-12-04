@@ -75,6 +75,19 @@ class ElderInfoActivity : AppCompatActivity() {
             }
             elderInfoRVAdapter.notifyItemInserted(elderInfoRVAdapter.itemCount)
         }
+        if(!data.getStringExtra("name1").equals("name1")) {
+            Log.d("name1", data.getStringExtra("name1").toString())
+            dataList.apply {
+                add(AddInfoRequest(data.getStringExtra("name1"), 1L, data.getStringExtra("contact1")))
+            }
+            elderInfoRVAdapter.notifyItemInserted(elderInfoRVAdapter.itemCount)
+        }
+        if(!data.getStringExtra("name2").equals("name2")) {
+            dataList.apply {
+                add(AddInfoRequest(data.getStringExtra("name2"), 1L, data.getStringExtra("contact2")))
+            }
+            elderInfoRVAdapter.notifyItemInserted(elderInfoRVAdapter.itemCount)
+        }
 //        viewBinding.elderName.text= data.getStringExtra("guestName")
 //        viewBinding.guardianName1.text = data.getStringExtra("name")
 //        viewBinding.guardianNumber1.text = data.getStringExtra("phoneNumber")

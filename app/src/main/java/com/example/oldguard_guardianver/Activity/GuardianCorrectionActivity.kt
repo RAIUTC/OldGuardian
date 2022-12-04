@@ -30,6 +30,7 @@ class GuardianCorrectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         var position = intent.getIntExtra("position",0) //꼭 위에 위치시키기
+        Log.d("position", position.toString())
 
         var intent : Intent
         viewBinding = ActivityGuardianCorrectionBinding.inflate(layoutInflater)
@@ -51,7 +52,7 @@ class GuardianCorrectionActivity : AppCompatActivity() {
                         intent.putExtra("position", position)
                         setResult(DELETE, intent)
 
-                        var request1 = DeleteContactRequest(0L, 0L)
+                        var request1 = DeleteContactRequest(position.toLong(), 0L)
                         var gson = GsonBuilder().setLenient().create()
 
                         val client = OkHttpClient.Builder().addInterceptor { chain ->
@@ -110,7 +111,7 @@ class GuardianCorrectionActivity : AppCompatActivity() {
                     Log.e("어르신 수정 실패", "${t.localizedMessage}")
                 }
                 override fun onResponse(call: Call<String>, response: Response<String>) {
-                    Log.d("성공",response.body().toString())
+                    Log.d("수정성공",response.body().toString())
                 }
             })
             var nameTemp = ""
@@ -122,17 +123,18 @@ class GuardianCorrectionActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<List<ContactResponse>>, response: Response<List<ContactResponse>>) {
                     Log.d("성공", response.body().toString())
                     nameTemp = response.body()?.get(0)?.name.toString()
-                    Log.d("성공", nameTemp)
+                    Log.d("nameTemp", nameTemp)
                     numberTemp = response.body()?.get(0)?.contact.toString()
-                    Log.d("성공", numberTemp)
+                    Log.d("numberTemp", numberTemp)
                 }
             })
-            val intent = Intent(this, ElderInfoActivity::class.java)
+            val intent = Intent(this, ElderlyManagerActivity::class.java)
             intent.putExtra("name", nameTemp)
             intent.putExtra("phoneNumber", numberTemp)
             intent.putExtra("position", position)
             setResult(FIX, intent)
-            finish()
+            startActivity(intent)
+//            finish()
         }
     }
     companion object{
